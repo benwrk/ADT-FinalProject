@@ -8,7 +8,7 @@ import java.util.EmptyStackException;
  * @author Benjapol Worakan 5710546577
  * @version 15.12.26
  */
-public class ListStack<E> implements Stack<E> {
+public class ListStack<E> extends Stack<E> {
     private ListNode<E> head;
 
     @Override
@@ -21,7 +21,7 @@ public class ListStack<E> implements Stack<E> {
         if (isEmpty()) {
             throw new EmptyStackException();
         }
-        E returnDatum = head.getDatum();
+        E returnDatum = peek();
         head = head.getNext();
         return returnDatum;
     }
@@ -40,4 +40,14 @@ public class ListStack<E> implements Stack<E> {
     public void clear() {
         head = null;
     }
+    
+    @Override
+    public String toString() {
+    	String s = "ListStack TOS[";
+    	for (ListNode<E> ln = head; ln != null; ln = ln.getNext()) {
+    		s += ln.getDatum() + ", ";
+    	}
+    	return s + "]";
+    }
+    
 }

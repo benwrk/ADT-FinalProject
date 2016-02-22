@@ -1,0 +1,48 @@
+package finalproject.collection;
+
+/**
+ * Interface of Stacks.
+ *
+ * @param <E> is data type of each elements in the Stack
+ * @author Benjapol Worakan 5710546577
+ * @version 16.2.22
+ */
+public interface Queue<E> {
+	
+	/**
+	 * Insert an element into the Queue.
+	 * 
+	 * @param e is an element to be inserted to the Queue
+	 */
+	void add(E e);
+	
+	/**
+	 * Get and remove an element in front of the Queue.
+	 * 
+	 * @return An element in front of the Queue.
+	 */
+	E remove();
+	
+	/**
+	 * Get an element in front of the Queue without removing it from the Queue.
+	 * 
+	 * @return An element in front of the Queue.
+	 */
+	E peek();
+	
+	/** 
+	 * Test whether if the Queue is empty.
+	 * 
+	 * @return true if the Queue is empty.
+	 */
+	boolean isEmpty();
+	
+	/**
+	 * Get the current size of the Queue.
+	 * 
+	 * @return The current size of the Queue.
+	 */
+	int size();
+	
+	void clear();
+}
