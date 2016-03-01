@@ -14,12 +14,16 @@ public class QueueUtilTest {
 		q.add("5");
 	
 		System.out.println(q);
+//		
+//		QueueUtil.moveToFront("3", q);
+//		
+//		System.out.println(q);
+//		
+//		QueueUtil.reverseQueue(q);
+//		
+//		System.out.println(q);
 		
-		QueueUtil.moveToFront("3", q);
-		
-		System.out.println(q);
-		
-		QueueUtil.reverseQueue(q);
+		q.moveBackToFront();
 		
 		System.out.println(q);
 	}

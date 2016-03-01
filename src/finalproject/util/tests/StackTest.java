@@ -1,6 +1,5 @@
 package finalproject.util.tests;
 
-import finalproject.collection.ArrayStack;
 import finalproject.collection.ListStack;
 import finalproject.collection.Stack;
 import finalproject.util.StackUtil;
@@ -35,11 +34,13 @@ public class StackTest {
 		s1.addWithoutDuplicates(s2);
 		System.out.println(s1);
 		System.out.println(s2);
-		
 		System.out.println();
 		StackUtil.sortStack(s1);
 		System.out.println(s1);
 		StackUtil.sortStack(s2);
 		System.out.println(s2);
+		System.out.println(s1);
+		s1.removeBottom();
+		System.out.println(s1);
 	}
 }

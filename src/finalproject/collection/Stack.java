@@ -70,5 +70,15 @@ public abstract class Stack<E> {
     	}
     	return b;
     }
-
+    
+    public void removeBottom() {
+    	  Stack<E> temp = new ListStack<>();
+    	  while(!isEmpty()){
+    	    temp.push(pop());
+    	  }
+    	  temp.pop();
+    	  while(!temp.isEmpty()){
+    	    push(temp.pop());
+    	  }
+    	}
 }

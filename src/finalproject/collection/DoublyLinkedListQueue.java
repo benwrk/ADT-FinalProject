@@ -1,6 +1,6 @@
 package finalproject.collection;
 
-public class DoublyLinkedListQueue<E> implements Queue<E> {
+public class DoublyLinkedListQueue<E> extends Queue<E> {
 
 	private DoublyLinkedListNode<E> head, tail;
 	private int size;
