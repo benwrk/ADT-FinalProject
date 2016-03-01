@@ -2,12 +2,12 @@ package finalproject.collection;
 
 /**
  * Nodes of a linked-list.
- * @param <T> is the data type of the node's datum
  *
+ * @param <T> is the data type of the node's datum
  * @author Benjapol Worakan 5710546577
  * @version 15.12.26
  */
-public class ListNode<T> {
+class ListNode<T> {
     private T datum;
     private ListNode<T> next;
 
@@ -15,7 +15,7 @@ public class ListNode<T> {
      * Create a new node.
      *
      * @param datum is the datum for the new node
-     * @param next is the next node that is right after this node
+     * @param next  is the next node that is right after this node
      */
     public ListNode(T datum, ListNode<T> next) {
         this.datum = datum;
@@ -32,21 +32,21 @@ public class ListNode<T> {
     }
 
     /**
-     * Get the node that is right after this node.
-     *
-     * @return the node right after this node (null if end-of-list)
-     */
-    public ListNode<T> getNext() {
-        return next;
-    }
-
-    /**
      * Set this node's datum to a new datum.
      *
      * @param datum is a new datum for this node
      */
     public void setDatum(T datum) {
         this.datum = datum;
+    }
+
+    /**
+     * Get the node that is right after this node.
+     *
+     * @return the node right after this node (null if end-of-list)
+     */
+    public ListNode<T> getNext() {
+        return next;
     }
 
     /**

@@ -14,6 +14,7 @@ import java.util.Scanner;
  */
 public class Main {
     public static Scanner scan = new Scanner(System.in);
+
     public static void main(String[] args) {
         System.out.println("Abstract Data Types and Problem Solving - Project 2");
         System.out.println("By Benjapol Worakan (5710546577)");
@@ -27,8 +28,8 @@ public class Main {
             run();
         }
     }
-    public static void run() {
 
+    public static void run() {
         System.out.println("Which function?");
         System.out.println(" 1: Expression Evaluation");
         System.out.println(" 2: Visitor Pattern");

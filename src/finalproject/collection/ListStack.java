@@ -3,17 +3,20 @@ package finalproject.collection;
 import java.util.EmptyStackException;
 
 /**
- * A Stack that is implemented with linked-list abstract data types.
+ * A Stack that is implemented with linked-list abstract data type.
  *
+ * @param <E> - the data type of each element in the stack
  * @author Benjapol Worakan 5710546577
- * @version 15.12.26
+ * @version 16.3.2
  */
 public class ListStack<E> extends Stack<E> {
     private ListNode<E> head;
+    private int size;
 
     @Override
     public void push(E e) {
         head = new ListNode<>(e, head);
+        size++;
     }
 
     @Override
@@ -23,6 +26,7 @@ public class ListStack<E> extends Stack<E> {
         }
         E returnDatum = peek();
         head = head.getNext();
+        size--;
         return returnDatum;
     }
 
@@ -39,15 +43,21 @@ public class ListStack<E> extends Stack<E> {
     @Override
     public void clear() {
         head = null;
+        size = 0;
     }
-    
+
+    @Override
+    public int size() {
+        return size;
+    }
+
     @Override
     public String toString() {
-    	String s = "ListStack TOS[";
-    	for (ListNode<E> ln = head; ln != null; ln = ln.getNext()) {
-    		s += ln.getDatum() + ", ";
-    	}
-    	return s + "]";
+        String s = super.toString() + ": TOS[";
+        for (ListNode<E> ln = head; ln != null; ln = ln.getNext()) {
+            s += ln.getDatum() + ", ";
+        }
+        return s + "]";
     }
-    
+
 }
