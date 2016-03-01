@@ -25,7 +25,7 @@ public class VisitorPatternTest {
                 break;
             }
             System.out.println("Creating expression tree using: " + (p ? in : ExpressionTreeMaker.convertInFixToPostFix(in)));
-            Expression expression = p ? ExpressionTreeMaker.makeWithPostFix(in) : ExpressionTreeMaker.makeWithInFix(in);
+            AbstractExpression expression = p ? ExpressionTreeMaker.makeWithPostFix(in) : ExpressionTreeMaker.makeWithInFix(in);
             System.out.println("The tree is: ");
             System.out.println(TreePrinter.stringifyExpressionTree(expression));
             System.out.println("Evaluation result: " + new Evaluator().visit(expression));

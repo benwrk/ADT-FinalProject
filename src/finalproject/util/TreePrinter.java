@@ -1,6 +1,6 @@
 package finalproject.util;
 
-import finalproject.expression.Expression;
+import finalproject.expression.AbstractExpression;
 import finalproject.expression.NumberExpression;
 
 /**
@@ -16,11 +16,14 @@ public class TreePrinter {
      * @param root is the root of the expression tree
      * @return a String representation of the given expression tree
      */
-    public static String stringifyExpressionTree(Expression root) {
+    public static String stringifyExpressionTree(AbstractExpression root) {
         return stringifyExpressionTreeHelper(root, 0);
     }
 
-    private static String stringifyExpressionTreeHelper(Expression root, int level) {
+    /**
+     * A recursive helper of {@link #stringifyExpressionTree(AbstractExpression)}.
+     */
+    private static String stringifyExpressionTreeHelper(AbstractExpression root, int level) {
         String returnCache = "";
         if (root != null) {
             returnCache += stringifyExpressionTreeHelper(root.getRight(), level + 1);
@@ -40,7 +43,7 @@ public class TreePrinter {
      * @param root is the root of the expression tree
      * @return an infix String representation of the given expression tree
      */
-    public static String stringifyAsInFix(Expression root) {
+    public static String stringifyAsInFix(AbstractExpression root) {
         String returnCache = "";
         if (root != null) {
             if (!(root instanceof NumberExpression)) {

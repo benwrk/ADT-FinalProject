@@ -8,8 +8,8 @@ import finalproject.expression.*;
  * @author Benjapol Worakan 5710546577
  * @version 15.12.26
  */
-public class DifferentiationSimplifier implements Visitor<Expression> {
-    public Expression visit(Expression expression) {
+public class DifferentiationSimplifier implements Visitor<AbstractExpression> {
+    public AbstractExpression visit(AbstractExpression expression) {
         if (expression instanceof AdditionExpression) {
             return visit((AdditionExpression) expression);
         } else if (expression instanceof SubtractionExpression) {
@@ -27,9 +27,9 @@ public class DifferentiationSimplifier implements Visitor<Expression> {
     }
 
     @Override
-    public Expression visit(AdditionExpression expression) {
-        Expression left = expression.getLeft().accept(this);
-        Expression right = expression.getRight().accept(this);
+    public AbstractExpression visit(AdditionExpression expression) {
+        AbstractExpression left = expression.getLeft().accept(this);
+        AbstractExpression right = expression.getRight().accept(this);
 //        if (left.getDatum().equals("0") && right.getDatum().equals("0")) {
 //            return new NumberExpression("0");
 //        } else if (left.getDatum().equals("0")) {
@@ -55,9 +55,9 @@ public class DifferentiationSimplifier implements Visitor<Expression> {
     }
 
     @Override
-    public Expression visit(SubtractionExpression expression) {
-        Expression left = expression.getLeft().accept(this);
-        Expression right = expression.getRight().accept(this);
+    public AbstractExpression visit(SubtractionExpression expression) {
+        AbstractExpression left = expression.getLeft().accept(this);
+        AbstractExpression right = expression.getRight().accept(this);
 //        if (left.getDatum().equals("0") && right.getDatum().equals("0")) {
 //            return new NumberExpression("0");
 //        } else if (right.getDatum().equals("0")) {
@@ -77,16 +77,9 @@ public class DifferentiationSimplifier implements Visitor<Expression> {
     }
 
     @Override
-    public Expression visit(MultiplicationExpression expression) {
-//        Expression left = new MultiplicationExpression(expression.getLeft().accept(this), expression.getRight());
-//        Expression right = new MultiplicationExpression(expression.getLeft(), expression.getRight().accept(this));
-        Expression left = expression.getLeft().accept(this);
-        Expression right = expression.getRight().accept(this);
-//        if (left_accept.getDatum().equals("0") || right_accept.getDatum().equals("0")) {
-//            return new NumberExpression("0");
-//        } else if (left_accept.getDatum().equals("1")) {
-//            return
-//        }
+    public AbstractExpression visit(MultiplicationExpression expression) {
+        AbstractExpression left = expression.getLeft().accept(this);
+        AbstractExpression right = expression.getRight().accept(this);
         if (left.evaluate() == 0 || right.evaluate() == 0) {
             return new NumberExpression("0");
         } else if (left.evaluate() == 1) {
@@ -99,10 +92,10 @@ public class DifferentiationSimplifier implements Visitor<Expression> {
     }
 
     @Override
-    public Expression visit(DivisionExpression expression) {
+    public AbstractExpression visit(DivisionExpression expression) {
 //        return new DivisionExpression(new SubtractionExpression(new MultiplicationExpression(expression.getLeft().accept(this), expression.getRight()), new MultiplicationExpression(expression.getLeft(), expression.getRight().accept(this))), new MultiplicationExpression(expression.getRight(), expression.getRight()));
-        Expression left = expression.getLeft().accept(this);
-        Expression right = expression.getRight().accept(this);
+        AbstractExpression left = expression.getLeft().accept(this);
+        AbstractExpression right = expression.getRight().accept(this);
         if (right.evaluate() == 0) {
             throw new ArithmeticException("Division by zero!");
         } else if (left.evaluate() == 0) {
@@ -117,12 +110,12 @@ public class DifferentiationSimplifier implements Visitor<Expression> {
     }
 
     @Override
-    public Expression visit(NumberExpression expression) {
+    public AbstractExpression visit(NumberExpression expression) {
         return expression;
     }
 
     @Override
-    public Expression visit(VariableExpression expression) {
+    public AbstractExpression visit(VariableExpression expression) {
         return expression;
     }
 }

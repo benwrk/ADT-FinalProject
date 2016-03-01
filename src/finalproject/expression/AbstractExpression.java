@@ -9,9 +9,15 @@ import finalproject.visitorpattern.Visitor;
  * @author Benjapol Worakan 5710546577
  * @version 15.12.26
  */
-public abstract class Expression {
+public abstract class AbstractExpression {
+    /**
+     * Datum of the Expression.
+     */
     private String datum;
-    private Expression left, right;
+    /**
+     * Left or right sub-Expression of this Expression.
+     */
+    private AbstractExpression left, right;
 
     /**
      * Construct a new Expression.
@@ -20,7 +26,7 @@ public abstract class Expression {
      * @param right is the right operand
      * @param datum is the Expression represented in String
      */
-    public Expression(Expression left, Expression right, String datum) {
+    public AbstractExpression(AbstractExpression left, AbstractExpression right, String datum) {
         this.datum = datum;
         this.left = left;
         this.right = right;
@@ -47,7 +53,7 @@ public abstract class Expression {
      *
      * @return left operand of this Expression
      */
-    public Expression getLeft() {
+    public AbstractExpression getLeft() {
         return left;
     }
 
@@ -56,7 +62,7 @@ public abstract class Expression {
      *
      * @return right operand of this Expression
      */
-    public Expression getRight() {
+    public AbstractExpression getRight() {
         return right;
     }
 

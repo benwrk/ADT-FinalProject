@@ -2,9 +2,21 @@ package finalproject.expression;
 
 import finalproject.visitorpattern.Visitor;
 
-public class MultiplicationExpression extends Expression {
+/**
+ * A multiplication expression. See {@link AbstractExpression} for more information.
+ *
+ * @author Benjapol Worakan 5710546577
+ * @version 15.12.26
+ * @see AbstractExpression
+ */
+public class MultiplicationExpression extends AbstractExpression {
 
-    public MultiplicationExpression(Expression left, Expression right) {
+    /**
+     * @param left  is the left operand
+     * @param right is the right operand
+     * @see AbstractExpression#AbstractExpression(AbstractExpression, AbstractExpression, String)
+     */
+    public MultiplicationExpression(AbstractExpression left, AbstractExpression right) {
         super(left, right, "*");
     }
 

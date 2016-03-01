@@ -3,7 +3,7 @@ package finalproject.util.tests;
 import finalproject.application.Main;
 import finalproject.util.ExpressionTreeMaker;
 import finalproject.util.TreePrinter;
-import finalproject.expression.Expression;
+import finalproject.expression.AbstractExpression;
 
 import java.util.Scanner;
 
@@ -24,7 +24,7 @@ public class ExpressionTest {
                 break;
             }
             System.out.println("Creating expression tree using: " + (p ? in : ExpressionTreeMaker.convertInFixToPostFix(in)));
-            Expression expression = p ? ExpressionTreeMaker.makeWithPostFix(in) : ExpressionTreeMaker.makeWithInFix(in);
+            AbstractExpression expression = p ? ExpressionTreeMaker.makeWithPostFix(in) : ExpressionTreeMaker.makeWithInFix(in);
             System.out.println("The tree is: ");
             System.out.println(TreePrinter.stringifyExpressionTree(expression));
             System.out.println("Evaluation result: " + expression.evaluate());

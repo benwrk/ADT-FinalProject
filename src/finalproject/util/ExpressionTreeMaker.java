@@ -6,6 +6,8 @@ import finalproject.expression.*;
 
 /**
  * Expression Tree maker that can create an expression tree from either infix or postfix expression.
+ * There is currently strict a limitation that numbers and variables can only have the length of 1 digit,
+ * or the parsing process will have an unexpected result.
  *
  * @author Benjapol Worakan 5710546577
  * @version 15.12.26
@@ -17,15 +19,15 @@ public class ExpressionTreeMaker {
      * @param postfix is a postfix expression that will be used to create the tree
      * @return an expression tree that is created from the given expression
      */
-    public static Expression makeWithPostFix(String postfix) {
-        Stack<Expression> expressionStack = new ListStack<>();
+    public static AbstractExpression makeWithPostFix(String postfix) {
+        Stack<AbstractExpression> expressionStack = new ListStack<>();
         String operators = "+-*/";
         String numbers = "0123456789";
         String variables = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         for (char c : postfix.toCharArray()) {
             if (operators.contains(Character.toString(c))) {
-                Expression right = expressionStack.pop();
-                Expression operator = null;
+                AbstractExpression right = expressionStack.pop();
+                AbstractExpression operator = null;
                 switch (c) {
                     case '+':
                         operator = new AdditionExpression(expressionStack.pop(), right);
@@ -56,7 +58,7 @@ public class ExpressionTreeMaker {
      * @param infix is an infix expression that will be used to create the tree
      * @return an expression tree that is created from the given expression
      */
-    public static Expression makeWithInFix(String infix) {
+    public static AbstractExpression makeWithInFix(String infix) {
         return makeWithPostFix(convertInFixToPostFix(infix));
     }
 

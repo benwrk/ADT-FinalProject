@@ -1,7 +1,7 @@
 package finalproject.util.tests;
 
 import finalproject.application.Main;
-import finalproject.expression.Expression;
+import finalproject.expression.AbstractExpression;
 import finalproject.util.ExpressionTreeMaker;
 import finalproject.util.TreePrinter;
 import finalproject.visitorpattern.Differentiation;
@@ -26,7 +26,7 @@ public class DifferentiationSimplifierTest {
                 break;
             }
             System.out.println("Creating expression tree using: " + (p ? in : ExpressionTreeMaker.convertInFixToPostFix(in)));
-            Expression expression = p ? ExpressionTreeMaker.makeWithPostFix(in) : ExpressionTreeMaker.makeWithInFix(in);
+            AbstractExpression expression = p ? ExpressionTreeMaker.makeWithPostFix(in) : ExpressionTreeMaker.makeWithInFix(in);
             System.out.println("The tree is: ");
             System.out.println(TreePrinter.stringifyExpressionTree(expression));
             System.out.println("The differentiation is " + TreePrinter.stringifyAsInFix(new DifferentiationSimplifier().visit(new Differentiation().visit(expression))));

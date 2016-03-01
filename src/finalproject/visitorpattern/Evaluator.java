@@ -9,7 +9,7 @@ import finalproject.expression.*;
  * @version 15.12.26
  */
 public class Evaluator implements Visitor<Integer> {
-    public Integer visit(Expression expression) {
+    public Integer visit(AbstractExpression expression) {
         if (expression instanceof AdditionExpression) {
             return visit((AdditionExpression) expression);
         } else if (expression instanceof SubtractionExpression) {

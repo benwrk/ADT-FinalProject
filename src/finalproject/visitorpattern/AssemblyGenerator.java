@@ -18,7 +18,7 @@ public class AssemblyGenerator implements Visitor<String> {
     private static final String MIPS_PRINT_INT = "li $v0, 1\nsyscall\n\n";
     private static final String MIPS_EXIT = "li $v0, 10\nsyscall\n";
 
-    public String visit(Expression expression) {
+    public String visit(AbstractExpression expression) {
         String mipsCode = MIPS_HEADER;
         if (expression instanceof AdditionExpression) {
             mipsCode += visit((AdditionExpression) expression);
