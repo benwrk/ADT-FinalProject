@@ -5,15 +5,20 @@ import finalproject.collection.Queue;
 import finalproject.util.QueueUtil;
 
 public class QueueUtilTest {
-	public static void main(String[] args) {
-		Queue<String> q = new DoublyLinkedListQueue<>();
-		q.add("1");
-		q.add("2");
-		q.add("3");
-		q.add("4");
-		q.add("5");
-	
-		System.out.println(q);
+    public static void main(String[] args) {
+        Queue<String> q = new DoublyLinkedListQueue<>();
+        q.add("5");
+        q.add("4");
+        q.add("3");
+        q.add("2");
+        q.add("1");
+        q.add("1");
+        q.add("2");
+        q.add("3");
+        q.add("4");
+        q.add("5");
+
+        System.out.println(q);
 //		
 //		QueueUtil.moveToFront("3", q);
 //		
@@ -22,9 +27,11 @@ public class QueueUtilTest {
 //		QueueUtil.reverseQueue(q);
 //		
 //		System.out.println(q);
-		
-		q.moveBackToFront();
-		
-		System.out.println(q);
-	}
+
+//		q.moveBackToFront();
+
+        QueueUtil.sortQueue(q);
+
+        System.out.println(q);
+    }
 }

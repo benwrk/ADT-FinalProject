@@ -55,4 +55,35 @@ public class QueueUtil {
             queue.add(stack.pop());
         }
     }
+
+    /**
+     * Sort the given queue.
+     *
+     * @param queue is the queue to be sorted
+     */
+    public static <E extends Comparable<E>> void sortQueue(Queue<E> queue) {
+        Queue<E> temp = new DoublyLinkedListQueue<>();
+        while (!queue.isEmpty()) {
+            temp.add(queue.remove());
+        }
+        E last = temp.peek();
+        while (!temp.isEmpty()) {
+            E current = temp.remove();
+            if (!queue.isEmpty() && last.compareTo(current) > 0) {
+                E i;
+                do {
+                    i = queue.remove();
+                    temp.add(i);
+                } while (!queue.isEmpty() && i.compareTo(current) < 0);
+                temp.add(current);
+                while (!queue.isEmpty()) {
+                    temp.add(queue.remove());
+                }
+            } else {
+                queue.add(current);
+            }
+//            System.out.println("current: " + current + " last: " + last + " q: " + queue + " t: " + temp);
+            last = current;
+        }
+    }
 }
